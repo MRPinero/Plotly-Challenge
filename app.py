@@ -13,11 +13,19 @@ from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 import plotly.express as px
-from .models import belly_buttom_biodiversity, db, app
+#from models import belly_button_biodiversity #, db, app
 
 
 
 app = Flask(__name__)
+
+#################################################
+# Database Setup
+#################################################
+
+#app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE.url', ' ') or "sqlite:///db/bellybutton.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/bellybutton.sqlite"
+db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
 Base = automap_base()

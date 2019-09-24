@@ -1,22 +1,20 @@
-from .app import db
+from app import db, app
 from flask_sqlalchemy import sqlalchemy
-from FLASK import flask
+from flask import Flask
+import os
+
 
 #################################################
 # Flask Setup
 #################################################
-
-app = Flask(__name__)
 
 #################################################
 # Database Setup
 #################################################
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE.url', ' ') or "sqlite:///db/bellybutton.sqlite"
-db = SQLAlchemy(app)
 
-
-class belly_buttom_biodiversity(db.Model):
+class belly_button_biodiversity(db.Model):
     __tablename__ = 'Belly Button Biodiversity'
 
     id = db.Column(db.Integer, primary_key=True)
